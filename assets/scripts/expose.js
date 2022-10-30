@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', init);
 function init() {
   // TODO
   const volume = document.getElementById("volume-controls");
-  const play_button = document.querySelector("button");
+  let play_button = document.querySelector("button");
 }
 
 window.addEventListener('click', function(image_update) {
@@ -43,10 +43,7 @@ volume.addEventListener('change', (event)=>{
   }
 });
 
-
+let play_button = document.querySelector("button");
 play_button.addEventListener('click', (e) => {
-  console.log(e.relatedTarget);
-  // if(e.target.contains("Play Sound")) {
-  //   console.log(e.target);
-  // }
+  document.getElementsByClassName("hidden")[0].play();
 });
