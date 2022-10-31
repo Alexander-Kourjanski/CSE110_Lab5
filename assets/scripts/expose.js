@@ -6,11 +6,12 @@ function init() {
   // TODO
   const volume = document.getElementById("volume-controls");
   let play_button = document.querySelector("button");
+  play_button.addEventListener('click', playAudio);
 }
 
-window.addEventListener('click', function(image_update) {
+window.addEventListener('change', function(image_update) {
   const horn = document.getElementById("horn-select");
-  var output = document.getElementsByClassName("hidden")[0];
+  var output = document.querySelector("audio");
   if(horn.value == "car-horn"){
     document.querySelector("img").src = "assets/images/car-horn.svg";
     output.src = "assets/audio/car-horn.mp3";
@@ -22,6 +23,17 @@ window.addEventListener('click', function(image_update) {
     output.src = "assets/audio/party-horn.mp3";
   }
 }, false);
+
+function playAudio() {
+  var currAudio = document.querySelector("audio");
+  currAudio.play();
+
+  const horn = document.getElementById("horn-select");
+  if (horn.value == "party-horn") {
+    var jsConfetti = new JSConfetti();
+    jsConfetti.addConfetti();
+  }
+}
 
 volume.addEventListener('change', (event)=>{
   var volume_select = document.getElementById("volume");
@@ -41,9 +53,4 @@ volume.addEventListener('change', (event)=>{
   else if(volume_select.value > 67) {
     document.querySelector("div>img").src = "assets/icons/volume-level-3.svg";
   }
-});
-
-let play_button = document.querySelector("button");
-play_button.addEventListener('click', (e) => {
-  document.getElementsByClassName("hidden")[0].play();
 });
