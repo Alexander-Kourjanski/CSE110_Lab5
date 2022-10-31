@@ -39,7 +39,7 @@ volume.addEventListener('change', (event)=>{
   var volume_select = document.getElementById("volume");
   
   volume_select.target = event.value / 100;
-  var output = document.getElementsByClassName("hidden");
+  var output = document.querySelector("audio");
   output.volume = volume_select.value/100;
   if(volume_select.value == 0) {
     document.querySelector("div>img").src = "assets/icons/volume-level-0.svg";
